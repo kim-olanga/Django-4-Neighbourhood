@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-3"></div>
+        <div class="col-md-6 m-auto">
+            <h1 class="text-center" style="font-family: 'Henny Penny', cursive;">Sign Up</h1>
+            <div class="card" style="background-color: teal;">
+                <div class="card-body">
+                    <form action="" method="POST" novalidate>
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button class="btn btn-sm btn-default">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+{% endblock %}
