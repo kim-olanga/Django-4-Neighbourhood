@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-from .forms import SignUpForm, ProfileUpdateForm
+from .forms import SignUpForm, UserUpdateForm,ProfileUpdateForm
 
 # Create your views here.
 def home(request):
