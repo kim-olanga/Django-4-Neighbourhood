@@ -80,3 +80,12 @@ class Post(models.Model):
     def hood_post(cls,id):
         hoodpost = Post.objects.filter(neighbourhood = id)
         return hoodpost
+
+    def __str__(self):
+        return f'{self.title} Post'
+
+    def save_post(self):
+        self.save()
+
+    def delete_post(self):
+        self.delete()
