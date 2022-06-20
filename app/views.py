@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
+
+from app.models import Neighbourhood
 from .forms import SignUpForm, UserUpdateForm,ProfileUpdateForm
 
 # Create your views here.
@@ -68,3 +70,9 @@ def update_profile(request):
                 'profile_form': profile_form
             }
     return render(request,'update_profile.html',context)
+
+@login_required(login_url='/accounts/login/')
+def hood(request):
+    hoods = Neighbourhood.objects.all()
+    
+    return render(request,'neighbourhood.html',{"hoods":hoods})
