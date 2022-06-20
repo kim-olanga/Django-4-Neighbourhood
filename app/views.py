@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 
 from app.models import Neighbourhood
-from .forms import SignUpForm, UserUpdateForm,ProfileUpdateForm
+from .forms import NewHoodForm, SignUpForm, UserUpdateForm,ProfileUpdateForm
 
 # Create your views here.
 def home(request):
@@ -74,5 +74,22 @@ def update_profile(request):
 @login_required(login_url='/accounts/login/')
 def hood(request):
     hoods = Neighbourhood.objects.all()
-    
+
     return render(request,'neighbourhood.html',{"hoods":hoods})
+
+@login_required(login_url='/accounts/login/')
+def new_hood(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = NewHoodForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.save(commit=False)
+            image.admin = current_user.profile
+            image.save()
+
+        return redirect('hood')
+
+    else:
+        form = NewHoodForm()
+    return render(request,'new_hood.html',{"form":form})
+
