@@ -76,3 +76,7 @@ class Post(models.Model):
     date = models.DateField(auto_now_add=True)
     neighbourhood = models.ForeignKey("Neighbourhood",on_delete=models.CASCADE, default='', null=True, blank=True)
     
+    @classmethod
+    def hood_post(cls,id):
+        hoodpost = Post.objects.filter(neighbourhood = id)
+        return hoodpost
