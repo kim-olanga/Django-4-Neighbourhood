@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home page</title>
-</head>
-<body>
-    <h1>Karibu to Nyumba-Kumi-Household</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+{{ block.super}}
+<div class="container-fluid" style="background-image: url('/static/images/jon-tyson-IhnV68HufN4-unsplash.jpg');  background-repeat: no-repeat; background-size: cover; height: 100vh;  background-position: center; text-align:center; overflow-x:hidden;" >
+    <h1 style="font-size:100px; margin-top:150px; color:#2BBBAD; font-family: 'Henny Penny', cursive; " >hood<i class="fas fa-home"></i>block</h1>
+    <a href="#"  style="margin-top:50px; " class="btn default-color btn-small">View Hood</a>
+
+</div>
+
+{% endblock %}
